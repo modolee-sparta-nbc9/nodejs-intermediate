@@ -1,13 +1,14 @@
 import express from 'express';
-import { SERVER_PORT } from '../constants/app.constant.js';
-import { apiRouter } from '../routers/index.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
+const PORT = 3018;
+
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use('/api', []);
 
-app.use('/api', apiRouter);
-
-app.listen(SERVER_PORT, () => {
-  console.log(`App listening on port ${SERVER_PORT}`);
+app.listen(PORT, () => {
+  // eslint-disable-next-line no-undef
+  console.log(PORT, '포트로 서버가 열렸어요!');
 });
