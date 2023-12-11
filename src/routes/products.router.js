@@ -17,6 +17,8 @@ router.product('/products');
 
 /** 상품 조회 API **/
 router.get('/', productsController.getProducts);
+//라우터.겟 이거는 오른쪽에 productsController.getProducts 얘네들 호출하는 것.
+//클라이언트의 요청 -> 라우터에서 컨트롤러 클래스에서 정의된 겟프로덕츠 메서드 실행하도록 설정한 것.
 
 /** 상품 상세 조회 API **/
 router.get('/:productId', productsController.getProductsById);
