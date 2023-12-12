@@ -1,16 +1,13 @@
 import express from 'express';
-import router from './routes/index.js';
-import LogMiddleware from './middlewares/log.middleware.js';
-import ErrorHandlingMiddleware from './middlewares/error-handling.middleware.js';
+import { SERVER_PORT } from './constants/app.constant.js';
+import { apiRouter } from './routers/index.js';
 
 const app = express();
-const port = 4000;
-
-app.use(LogMiddleware);
 app.use(express.json());
-app.use('/api', router);
-app.use(ErrorHandlingMiddleware);
+app.use(express.urlencoded({ extended: true }));
 
-app.listen(port, () => {
-  console.log(port, '포트로 서버가 열렸어요!');
+app.use('/api', apiRouter);
+
+app.listen(SERVER_PORT, () => {
+  console.log(`App listening on port ${SERVER_PORT}`);
 });
